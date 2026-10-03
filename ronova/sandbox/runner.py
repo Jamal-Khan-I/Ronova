@@ -2,6 +2,7 @@ import json
 import os
 import shutil
 import subprocess
+import sys
 import tempfile
 import time
 from typing import Any, Dict, Tuple
@@ -76,7 +77,7 @@ class IsolatedSandboxRunner:
             np.save(input_file, input_array)
 
             cmd = [
-                shutil.which("python") or "python",
+                sys.executable,
                 "-m",
                 "ronova.sandbox.worker",
                 abs_model_path,
